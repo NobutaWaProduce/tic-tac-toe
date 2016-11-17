@@ -3,17 +3,12 @@
 var namespace = "http://www.w3.org/2000/svg"
 
 
-var currentShape = "circle"
-function shapes() {
-  var buttonClicked = 0
-  function alertOnlyOnce() {
-    if (buttonClicked == 0) {
-      alert(shapes)
-      buttonClicked = 1
-    }
-  }
-  var canvas = document.getElementById("game-board")
-  if (currentShape == "circle") {
+
+var turn = "player1"
+function squareTwo(){
+  if (turn == "player1"){
+    var currentShape = "circle"
+     var canvas = document.getElementById("game-board")
     var circle = document.createElementNS(namespace, "circle")
     circle.setAttribute("cx", 40)
     circle.setAttribute("cy", 40)
@@ -21,7 +16,10 @@ function shapes() {
     circle.setAttribute("fill" , "blue")
     canvas.appendChild(circle)
     currentShape = "rect"
-  } else {
+    turn = "player2"
+  }else{
+    var currentShape = "rect"
+     var canvas = document.getElementById("game-board")
     var rect = document.createElementNS(namespace, "rect")
     rect.setAttribute("x", "80")
     rect.setAttribute("y", "20")
@@ -30,5 +28,6 @@ function shapes() {
     rect.setAttribute("fill", "green")
     canvas.appendChild(rect)
     currentShape = "circle"
+    turn = "player1"
   }
 }
